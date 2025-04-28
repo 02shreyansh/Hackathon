@@ -30,11 +30,10 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Upload, FileSpreadsheet, Check, X, AlertCircle, FileDown, ChevronDown, RefreshCw } from "lucide-react";
-import { Toaster as toast } from "@/components/ui/sonner"
+import { toast } from "sonner";
 
 // Types
 type TransactionStatus = 'matched' | 'unmatched' | 'review';
-
 interface Transaction {
   id: string;
   date: string;
@@ -55,25 +54,26 @@ function Reconciliation() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [activeTab, setActiveTab] = useState('all');
   const [progress, setProgress] = useState(0);
-
+  
   // File upload handlers
   const handleBankFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setBankFile(e.target.files[0]);
     }
   };
-
+  
   const handleLedgerFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setLedgerFile(e.target.files[0]);
     }
   };
-
+  
   const startReconciliation = async () => {
     if (!bankFile || !ledgerFile) {
+      toast.error("Please upload both bank and ledger files");
       return;
     }
-
+    
     setIsProcessing(true);
     setProgress(10);
     
@@ -82,7 +82,8 @@ function Reconciliation() {
       const formData = new FormData();
       formData.append('bank', bankFile);
       formData.append('ledger', ledgerFile);
-
+      formData.append('modify_bank', 'true'); // Default to modifying bank data
+    
       // Simulate progress while API processes files
       const progressInterval = setInterval(() => {
         setProgress(prev => {
@@ -90,86 +91,69 @@ function Reconciliation() {
           return newProgress < 90 ? newProgress : prev;
         });
       }, 300);
-
+    
       // Send files to API
       const response = await fetch('http://localhost:8000/reconcile', {
         method: 'POST',
         body: formData,
       });
-
+      
       clearInterval(progressInterval);
       
       if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.detail || `API responded with status: ${response.status}`);
       }
       
-      // Process the API response
+      // Process the API response as JSON
       const data = await response.json();
       setProgress(100);
       
-      // Transform API response to match our Transaction interface
-      const processedTransactions = processApiResponse(data);
-      setTransactions(processedTransactions);
+      // Check if the API request was successful
+      if (data.success) {
+        // Process and set transactions from the response
+        const processedTransactions = data.transactions.map((transaction: any) => {
+          // Ensure all required fields exist
+          return {
+            id: transaction.id || `tx-${Math.random().toString(36).substr(2, 9)}`,
+            date: transaction.date || new Date().toISOString().split('T')[0],
+            description: transaction.description || 'Unknown transaction',
+            amount: parseFloat(transaction.amount) || 0,
+            source: transaction.source || 'unknown',
+            status: transaction.status || 'unmatched',
+            matchId: transaction.matchId,
+            confidence: transaction.confidence,
+            category: transaction.category || undefined
+          };
+        });
+        
+        setTransactions(processedTransactions);
+        
+        toast.success(
+          `Reconciliation Complete`, 
+          {
+            description: `Successfully reconciled files. Modified ${data.source} data with ${data.modification_count} changes.`
+          }
+        );
+      } else {
+        throw new Error("API returned success: false");
+      }
       
       setIsProcessing(false);
       setIsReconciled(true);
     } catch (error) {
       console.error('Error during reconciliation:', error);
-      toast({
-        title: "Reconciliation Failed",
-        description: "There was an error processing your files. Please try again.",
-        variant: "destructive",
-      });
+      toast.error(
+        "Reconciliation Failed", 
+        { 
+          description: error instanceof Error ? error.message : "There was an error processing your files. Please try again."
+        }
+      );
       setIsProcessing(false);
       setProgress(0);
-    }
+    }  
   };
-
-  // Process API response and transform to our Transaction interface
-  const processApiResponse = (data: any): Transaction[] => {
-    // Replace this with actual mapping based on your API response structure
-    // This is just a placeholder assuming API returns transactions in some format
-    const transformedTransactions: Transaction[] = [];
-    
-    // Process bank transactions
-    if (data.bankData && Array.isArray(data.bankData)) {
-      data.bankData.forEach((item: any, index: number) => {
-        const transaction: Transaction = {
-          id: `bank-${index}`,
-          date: item.date || '',
-          description: item.description || '',
-          amount: parseFloat(item.amount) || 0,
-          source: 'bank',
-          status: item.status || 'unmatched',
-          category: item.category || undefined,
-          matchId: item.matchId || undefined,
-          confidence: item.confidence || undefined
-        };
-        transformedTransactions.push(transaction);
-      });
-    }
-    
-    // Process ledger transactions
-    if (data.ledgerData && Array.isArray(data.ledgerData)) {
-      data.ledgerData.forEach((item: any, index: number) => {
-        const transaction: Transaction = {
-          id: `ledger-${index}`,
-          date: item.date || '',
-          description: item.description || '',
-          amount: parseFloat(item.amount) || 0,
-          source: 'ledger',
-          status: item.status || 'unmatched',
-          category: item.category || undefined,
-          matchId: item.matchId || undefined,
-          confidence: item.confidence || undefined
-        };
-        transformedTransactions.push(transaction);
-      });
-    }
-    
-    return transformedTransactions;
-  };
-
+  
   // Filter transactions based on active tab
   const filteredTransactions = transactions.filter(transaction => {
     if (activeTab === 'all') return true;
@@ -178,88 +162,92 @@ function Reconciliation() {
     if (activeTab === 'review') return transaction.status === 'review';
     return true;
   });
-
+  
   // Count transactions by status
-  const matchedCount = transactions.filter(t => t.status === 'matched').length / 2;
-  const unmatchedCount = transactions.filter(t => t.status === 'unmatched').length;
-  const reviewCount = transactions.filter(t => t.status === 'review').length / 2;
+  const matchedCount = transactions.filter(t => t.status === 'matched').length / 2 || 0;
+  const unmatchedCount = transactions.filter(t => t.status === 'unmatched').length || 0;
+  const reviewCount = transactions.filter(t => t.status === 'review').length / 2 || 0;
   
   // Calculate completion percentage
-  const totalItems = matchedCount + unmatchedCount + reviewCount;
-  const completionPercentage = totalItems > 0 ? Math.round((matchedCount / totalItems) * 100) : 0;
-
+  const totalTransactionPairs = transactions.length > 0 
+    ? (transactions.filter(t => t.matchId).length / 2) + unmatchedCount 
+    : 0;
+  const completionPercentage = totalTransactionPairs > 0 
+    ? Math.round((matchedCount / totalTransactionPairs) * 100) 
+    : 0;
+  
   // Handle match confirmation and rejection
   const confirmMatch = async (id: string) => {
     try {
-      // Send match confirmation to API
-      const matchedTransaction = transactions.find(t => t.id === id || t.matchId === id);
+      // Find the transaction and its matching pair
+      const transaction = transactions.find(t => t.id === id);
+      if (!transaction || !transaction.matchId) return;
       
-      if (!matchedTransaction) return;
-      
-      // You can send a request to your API to confirm this match
-      // For now, we'll just update the local state
+      // Update both transactions in the pair
       setTransactions(transactions.map(t => {
-        if (t.id === id || t.matchId === id) {
+        if (t.id === id || t.matchId === transaction.matchId) {
           return {...t, status: 'matched', confidence: 100};
         }
         return t;
       }));
+      
+      toast.success("Match confirmed successfully");
     } catch (error) {
       console.error('Error confirming match:', error);
-      toast({
-        title: "Error",
-        description: "Failed to confirm match. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("Failed to confirm match. Please try again.");
     }
   };
-
+  
   const rejectMatch = async (id: string) => {
     try {
-      // Send match rejection to API
-      const rejectedTransaction = transactions.find(t => t.id === id || t.matchId === id);
+      // Find the transaction and its matching pair
+      const transaction = transactions.find(t => t.id === id);
+      if (!transaction || !transaction.matchId) return;
       
-      if (!rejectedTransaction) return;
+      const matchId = transaction.matchId;
       
-      // You can send a request to your API to reject this match
-      // For now, we'll just update the local state
+      // Update both transactions in the pair
       setTransactions(transactions.map(t => {
-        if (t.id === id || t.matchId === id) {
+        if (t.id === id || t.matchId === matchId) {
           return {...t, status: 'unmatched', matchId: undefined, confidence: undefined};
         }
         return t;
       }));
+      
+      toast.success("Match rejected successfully");
     } catch (error) {
       console.error('Error rejecting match:', error);
-      toast({
-        title: "Error",
-        description: "Failed to reject match. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("Failed to reject match. Please try again.");
     }
   };
-
+  
   // Refresh data by reprocessing the files
   const refreshData = () => {
     if (bankFile && ledgerFile) {
       startReconciliation();
+    } else {
+      toast.error("Please ensure both files are uploaded before refreshing");
     }
   };
-
-  // Export report (placeholder function)
+  
+  // Export report
   const exportReport = () => {
-    toast({
-      title: "Export Started",
-      description: "Your report is being generated and will download shortly.",
+    if (transactions.length === 0) {
+      toast.error("No data to export");
+      return;
+    }
+    
+    toast.success("Export Started", {
+      description: "Your report is being generated and will download shortly."
     });
     
-    // Implement actual export functionality here
-    // For example, convert transactions to CSV and download
-    setTimeout(() => {
+    try {
+      const headers = ["Date", "Description", "Amount", "Source", "Status", "Confidence"];
+      
       const csvContent = "data:text/csv;charset=utf-8," + 
-        "Date,Description,Amount,Source,Status,Confidence\n" +
+        headers.join(",") + "\n" +
         transactions.map(t => 
-          `${t.date},${t.description},${t.amount},${t.source},${t.status},${t.confidence || ''}`
+          `${t.date},${t.description.replace(/,/g, ";")},${t.amount},${t.source},${t.status},${t.confidence || ''}`
         ).join("\n");
         
       const encodedUri = encodeURI(csvContent);
@@ -268,25 +256,29 @@ function Reconciliation() {
       link.setAttribute("download", "reconciliation_report.csv");
       document.body.appendChild(link);
       link.click();
-    }, 500);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Export error:", error);
+      toast.error("Failed to export report");
+    }
   };
-
+  
   // Render confidence badge with appropriate color
   const renderConfidenceBadge = (confidence?: number) => {
     if (!confidence) return null;
     
-    let color = 'bg-red-500';
-    if (confidence >= 90) color = 'bg-green-500';
-    else if (confidence >= 70) color = 'bg-yellow-500';
-    else if (confidence >= 50) color = 'bg-orange-500';
+    let badgeVariant = 'bg-red-500';
+    if (confidence >= 90) badgeVariant = 'bg-green-500';
+    else if (confidence >= 70) badgeVariant = 'bg-yellow-500';
+    else if (confidence >= 50) badgeVariant = 'bg-orange-500';
     
     return (
-      <span className={`text-xs font-medium px-2 py-1 rounded-full text-white ${color}`}>
+      <span className={`text-xs font-medium px-2 py-1 rounded-full text-white ${badgeVariant}`}>
         {confidence}%
       </span>
     );
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
@@ -294,7 +286,6 @@ function Reconciliation() {
           <h1 className="text-xl font-bold text-gray-900">Financial Reconciliation Tool</h1>
         </div>
       </header>
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {!isReconciled ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -331,7 +322,6 @@ function Reconciliation() {
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle>Ledger Entries</CardTitle>
@@ -364,7 +354,6 @@ function Reconciliation() {
                 </div>
               </CardContent>
             </Card>
-
             {/* Process Button */}
             <div className="col-span-1 md:col-span-2 flex justify-center mt-4">
               <Button 
@@ -382,7 +371,6 @@ function Reconciliation() {
                 )}
               </Button>
             </div>
-
             {/* Progress Bar */}
             {isProcessing && (
               <div className="col-span-1 md:col-span-2 mt-4">
@@ -442,7 +430,6 @@ function Reconciliation() {
                 </CardContent>
               </Card>
             </div>
-
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-2 mb-6">
               <Button 
@@ -476,7 +463,6 @@ function Reconciliation() {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-
             {/* Transaction Table with Tabs */}
             <Tabs defaultValue="all" onValueChange={setActiveTab}>
               <div className="flex justify-between items-center mb-4">
@@ -487,7 +473,6 @@ function Reconciliation() {
                   <TabsTrigger value="review">Need Review</TabsTrigger>
                 </TabsList>
               </div>
-
               <TabsContent value={activeTab} className="mt-0">
                 <Card>
                   <CardContent className="p-0">
@@ -504,54 +489,55 @@ function Reconciliation() {
                           </TableRow>
                         </TableHeader>
                         <TableBody>
-                          {filteredTransactions.map((transaction) => (
-                            <TableRow key={transaction.id} className={
-                              transaction.status === 'matched' ? 'bg-green-50' :
-                              transaction.status === 'review' ? 'bg-yellow-50' : ''
-                            }>
-                              <TableCell>{transaction.date}</TableCell>
-                              <TableCell>
-                                <div className="flex flex-col">
-                                  <span>{transaction.description}</span>
-                                  {transaction.category && (
-                                    <Badge variant="outline" className="w-fit mt-1">{transaction.category}</Badge>
-                                  )}
-                                </div>
-                              </TableCell>
-                              <TableCell className={transaction.amount < 0 ? 'text-red-600' : 'text-green-600'}>
-                                ${Math.abs(transaction.amount).toFixed(2)}
-                              </TableCell>
-                              <TableCell>
-                                <Badge variant="secondary">
-                                  {transaction.source === 'bank' ? 'Bank' : 'Ledger'}
-                                </Badge>
-                              </TableCell>
-                              <TableCell>
-                                {renderConfidenceBadge(transaction.confidence)}
-                              </TableCell>
-                              <TableCell className="text-right">
-                                {transaction.status === 'review' && (
-                                  <div className="flex justify-end space-x-2">
-                                    <Button 
-                                      variant="ghost" 
-                                      size="sm"
-                                      onClick={() => confirmMatch(transaction.id)}
-                                    >
-                                      <Check className="h-4 w-4 text-green-500" />
-                                    </Button>
-                                    <Button 
-                                      variant="ghost" 
-                                      size="sm"
-                                      onClick={() => rejectMatch(transaction.id)}
-                                    >
-                                      <X className="h-4 w-4 text-red-500" />
-                                    </Button>
+                          {filteredTransactions.length > 0 ? (
+                            filteredTransactions.map((transaction) => (
+                              <TableRow key={transaction.id} className={
+                                transaction.status === 'matched' ? 'bg-green-50' :
+                                transaction.status === 'review' ? 'bg-yellow-50' : ''
+                              }>
+                                <TableCell>{transaction.date}</TableCell>
+                                <TableCell>
+                                  <div className="flex flex-col">
+                                    <span>{transaction.description}</span>
+                                    {transaction.category && (
+                                      <Badge variant="outline" className="w-fit mt-1">{transaction.category}</Badge>
+                                    )}
                                   </div>
-                                )}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                          {filteredTransactions.length === 0 && (
+                                </TableCell>
+                                <TableCell className={transaction.amount < 0 ? 'text-red-600' : 'text-green-600'}>
+                                  ${Math.abs(transaction.amount).toFixed(2)}
+                                </TableCell>
+                                <TableCell>
+                                  <Badge variant="secondary">
+                                    {transaction.source === 'bank' ? 'Bank' : 'Ledger'}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell>
+                                  {renderConfidenceBadge(transaction.confidence)}
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  {transaction.status === 'review' && (
+                                    <div className="flex justify-end space-x-2">
+                                      <Button 
+                                        variant="ghost" 
+                                        size="sm"
+                                        onClick={() => confirmMatch(transaction.id)}
+                                      >
+                                        <Check className="h-4 w-4 text-green-500" />
+                                      </Button>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="sm"
+                                        onClick={() => rejectMatch(transaction.id)}
+                                      >
+                                        <X className="h-4 w-4 text-red-500" />
+                                      </Button>
+                                    </div>
+                                  )}
+                                </TableCell>
+                              </TableRow>
+                            ))
+                          ) : (
                             <TableRow>
                               <TableCell colSpan={6} className="text-center py-10 text-gray-500">
                                 No transactions found in this category
