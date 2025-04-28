@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Upload, FileSpreadsheet, Check, X, AlertCircle, FileDown, ChevronDown, RefreshCw } from "lucide-react";
+import { Toaster as toast } from "@/components/ui/sonner"
 
 // Types
 type TransactionStatus = 'matched' | 'unmatched' | 'review';
@@ -46,7 +47,7 @@ interface Transaction {
   category?: string;
 }
 
-function Reconcillation() {
+function Reconciliation() {
   const [bankFile, setBankFile] = useState<File | null>(null);
   const [ledgerFile, setLedgerFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -55,7 +56,7 @@ function Reconcillation() {
   const [activeTab, setActiveTab] = useState('all');
   const [progress, setProgress] = useState(0);
 
-  // Simulate file upload handlers
+  // File upload handlers
   const handleBankFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setBankFile(e.target.files[0]);
@@ -68,137 +69,105 @@ function Reconcillation() {
     }
   };
 
-  const startReconciliation = () => {
+  const startReconciliation = async () => {
+    if (!bankFile || !ledgerFile) {
+      return;
+    }
+
     setIsProcessing(true);
+    setProgress(10);
     
-    // Simulate progress
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      setProgress(progress);
+    try {
+      // Create form data to send files
+      const formData = new FormData();
+      formData.append('bank', bankFile);
+      formData.append('ledger', ledgerFile);
+
+      // Simulate progress while API processes files
+      const progressInterval = setInterval(() => {
+        setProgress(prev => {
+          const newProgress = prev + 10;
+          return newProgress < 90 ? newProgress : prev;
+        });
+      }, 300);
+
+      // Send files to API
+      const response = await fetch('http://localhost:8000/reconcile', {
+        method: 'POST',
+        body: formData,
+      });
+
+      clearInterval(progressInterval);
       
-      if (progress >= 100) {
-        clearInterval(interval);
-        setIsProcessing(false);
-        setIsReconciled(true);
-        // Generate mock data
-        generateMockTransactions();
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
       }
-    }, 300);
+      
+      // Process the API response
+      const data = await response.json();
+      setProgress(100);
+      
+      // Transform API response to match our Transaction interface
+      const processedTransactions = processApiResponse(data);
+      setTransactions(processedTransactions);
+      
+      setIsProcessing(false);
+      setIsReconciled(true);
+    } catch (error) {
+      console.error('Error during reconciliation:', error);
+      toast({
+        title: "Reconciliation Failed",
+        description: "There was an error processing your files. Please try again.",
+        variant: "destructive",
+      });
+      setIsProcessing(false);
+      setProgress(0);
+    }
   };
 
-  // Mock data generation for UI demo purposes
-  const generateMockTransactions = () => {
-    const mockTransactions: Transaction[] = [
-      {
-        id: '1',
-        date: '2025-04-23',
-        description: 'Amazon Web Services',
-        amount: 129.99,
-        source: 'bank',
-        matchId: '101',
-        confidence: 95,
-        status: 'matched',
-        category: 'Software'
-      },
-      {
-        id: '101',
-        date: '2025-04-23',
-        description: 'AWS Monthly Subscription',
-        amount: 129.99,
-        source: 'ledger',
-        matchId: '1',
-        confidence: 95,
-        status: 'matched',
-        category: 'Software'
-      },
-      {
-        id: '2',
-        date: '2025-04-22',
-        description: 'UBER TRIP 5648',
-        amount: 24.50,
-        source: 'bank',
-        matchId: '102',
-        confidence: 85,
-        status: 'matched',
-        category: 'Travel'
-      },
-      {
-        id: '102',
-        date: '2025-04-22',
-        description: 'Uber - Airport Trip',
-        amount: 24.50,
-        source: 'ledger',
-        matchId: '2',
-        confidence: 85,
-        status: 'matched',
-        category: 'Travel'
-      },
-      {
-        id: '3',
-        date: '2025-04-20',
-        description: 'MICROSOFT 365',
-        amount: 9.99,
-        source: 'bank',
-        status: 'unmatched',
-        category: 'Software'
-      },
-      {
-        id: '103',
-        date: '2025-04-19',
-        description: 'Office Supplies',
-        amount: 45.75,
-        source: 'ledger',
-        status: 'unmatched',
-        category: 'Office'
-      },
-      {
-        id: '4',
-        date: '2025-04-18',
-        description: 'PAYPAL *DESIGNTOOLS',
-        amount: 19.99,
-        source: 'bank',
-        matchId: '104',
-        confidence: 62,
-        status: 'review',
-        category: 'Software'
-      },
-      {
-        id: '104',
-        date: '2025-04-17',
-        description: 'Design Software - Monthly',
-        amount: 19.99,
-        source: 'ledger',
-        matchId: '4',
-        confidence: 62,
-        status: 'review',
-        category: 'Software'
-      },
-      {
-        id: '5',
-        date: '2025-04-15',
-        description: 'AMZN MKT 56734',
-        amount: 35.67,
-        source: 'bank',
-        matchId: '105',
-        confidence: 78,
-        status: 'matched',
-        category: 'Office'
-      },
-      {
-        id: '105',
-        date: '2025-04-15',
-        description: 'Amazon - Office Supplies',
-        amount: 35.67,
-        source: 'ledger',
-        matchId: '5',
-        confidence: 78,
-        status: 'matched',
-        category: 'Office'
-      }
-    ];
+  // Process API response and transform to our Transaction interface
+  const processApiResponse = (data: any): Transaction[] => {
+    // Replace this with actual mapping based on your API response structure
+    // This is just a placeholder assuming API returns transactions in some format
+    const transformedTransactions: Transaction[] = [];
     
-    setTransactions(mockTransactions);
+    // Process bank transactions
+    if (data.bankData && Array.isArray(data.bankData)) {
+      data.bankData.forEach((item: any, index: number) => {
+        const transaction: Transaction = {
+          id: `bank-${index}`,
+          date: item.date || '',
+          description: item.description || '',
+          amount: parseFloat(item.amount) || 0,
+          source: 'bank',
+          status: item.status || 'unmatched',
+          category: item.category || undefined,
+          matchId: item.matchId || undefined,
+          confidence: item.confidence || undefined
+        };
+        transformedTransactions.push(transaction);
+      });
+    }
+    
+    // Process ledger transactions
+    if (data.ledgerData && Array.isArray(data.ledgerData)) {
+      data.ledgerData.forEach((item: any, index: number) => {
+        const transaction: Transaction = {
+          id: `ledger-${index}`,
+          date: item.date || '',
+          description: item.description || '',
+          amount: parseFloat(item.amount) || 0,
+          source: 'ledger',
+          status: item.status || 'unmatched',
+          category: item.category || undefined,
+          matchId: item.matchId || undefined,
+          confidence: item.confidence || undefined
+        };
+        transformedTransactions.push(transaction);
+      });
+    }
+    
+    return transformedTransactions;
   };
 
   // Filter transactions based on active tab
@@ -220,22 +189,86 @@ function Reconcillation() {
   const completionPercentage = totalItems > 0 ? Math.round((matchedCount / totalItems) * 100) : 0;
 
   // Handle match confirmation and rejection
-  const confirmMatch = (id: string) => {
-    setTransactions(transactions.map(t => {
-      if (t.id === id || t.matchId === id) {
-        return {...t, status: 'matched', confidence: 100};
-      }
-      return t;
-    }));
+  const confirmMatch = async (id: string) => {
+    try {
+      // Send match confirmation to API
+      const matchedTransaction = transactions.find(t => t.id === id || t.matchId === id);
+      
+      if (!matchedTransaction) return;
+      
+      // You can send a request to your API to confirm this match
+      // For now, we'll just update the local state
+      setTransactions(transactions.map(t => {
+        if (t.id === id || t.matchId === id) {
+          return {...t, status: 'matched', confidence: 100};
+        }
+        return t;
+      }));
+    } catch (error) {
+      console.error('Error confirming match:', error);
+      toast({
+        title: "Error",
+        description: "Failed to confirm match. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
-  const rejectMatch = (id: string) => {
-    setTransactions(transactions.map(t => {
-      if (t.id === id || t.matchId === id) {
-        return {...t, status: 'unmatched', matchId: undefined, confidence: undefined};
-      }
-      return t;
-    }));
+  const rejectMatch = async (id: string) => {
+    try {
+      // Send match rejection to API
+      const rejectedTransaction = transactions.find(t => t.id === id || t.matchId === id);
+      
+      if (!rejectedTransaction) return;
+      
+      // You can send a request to your API to reject this match
+      // For now, we'll just update the local state
+      setTransactions(transactions.map(t => {
+        if (t.id === id || t.matchId === id) {
+          return {...t, status: 'unmatched', matchId: undefined, confidence: undefined};
+        }
+        return t;
+      }));
+    } catch (error) {
+      console.error('Error rejecting match:', error);
+      toast({
+        title: "Error",
+        description: "Failed to reject match. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  // Refresh data by reprocessing the files
+  const refreshData = () => {
+    if (bankFile && ledgerFile) {
+      startReconciliation();
+    }
+  };
+
+  // Export report (placeholder function)
+  const exportReport = () => {
+    toast({
+      title: "Export Started",
+      description: "Your report is being generated and will download shortly.",
+    });
+    
+    // Implement actual export functionality here
+    // For example, convert transactions to CSV and download
+    setTimeout(() => {
+      const csvContent = "data:text/csv;charset=utf-8," + 
+        "Date,Description,Amount,Source,Status,Confidence\n" +
+        transactions.map(t => 
+          `${t.date},${t.description},${t.amount},${t.source},${t.status},${t.confidence || ''}`
+        ).join("\n");
+        
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "reconciliation_report.csv");
+      document.body.appendChild(link);
+      link.click();
+    }, 500);
   };
 
   // Render confidence badge with appropriate color
@@ -412,12 +445,20 @@ function Reconcillation() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-2 mb-6">
-              <Button variant="outline" className="flex items-center">
+              <Button 
+                variant="outline" 
+                className="flex items-center"
+                onClick={refreshData}
+              >
                 <RefreshCw className="mr-2 h-4 w-4" />
                 Refresh Data
               </Button>
               
-              <Button variant="outline" className="flex items-center">
+              <Button 
+                variant="outline" 
+                className="flex items-center"
+                onClick={exportReport}
+              >
                 <FileDown className="mr-2 h-4 w-4" />
                 Export Report
               </Button>
@@ -531,4 +572,4 @@ function Reconcillation() {
   );
 }
 
-export default Reconcillation;
+export default Reconciliation;
