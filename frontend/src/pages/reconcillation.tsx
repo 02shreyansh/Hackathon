@@ -105,15 +105,15 @@ function Reconciliation() {
         throw new Error(errorData.detail || `API responded with status: ${response.status}`);
       }
       
-      // Process the API response as JSON
+     
       const data = await response.json();
       setProgress(100);
       
-      // Check if the API request was successful
+      
       if (data.success) {
-        // Process and set transactions from the response
+
         const processedTransactions = data.transactions.map((transaction: any) => {
-          // Ensure all required fields exist
+          
           return {
             id: transaction.id || `tx-${Math.random().toString(36).substr(2, 9)}`,
             date: transaction.date || new Date().toISOString().split('T')[0],
