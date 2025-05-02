@@ -1,50 +1,304 @@
-Account No,DATE,TRANSACTION DETAILS,CHQ.NO.,VALUE DATE, WITHDRAWAL AMT , DEPOSIT AMT ,BALANCE AMT,.
-409000611074',29-Jun-17,TRF FROM  Indiaforensic SERVICES,,29-Jun-17,," 10,00,000.00 "," 10,00,000.00 ",.
-409000611074',05-Jul-17,TRF FROM  Indiaforensic SERVICES,,05-Jul-17,," 10,00,000.00 "," 20,00,000.00 ",.
-409000611074',18-Jul-17,FDRL/INTERNAL FUND TRANSFE,,18-Jul-17,," 5,00,000.00 "," 25,00,000.00 ",.
-409000611074',01-Aug-17,TRF FRM  Indiaforensic SERVICES,,01-Aug-17,," 30,00,000.00 "," 55,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 60,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 65,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 70,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 75,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 80,00,000.00 ",.
-409000611074',16-Aug-17,FDRL/INTERNAL FUND TRANSFE,,16-Aug-17,," 5,00,000.00 "," 85,00,000.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL01071,,16-Aug-17," 1,33,900.00 ",," 83,66,100.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL02071,,16-Aug-17," 18,000.00 ",," 83,48,100.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL03071,,16-Aug-17," 5,000.00 ",," 83,43,100.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL04071,,16-Aug-17," 1,95,800.00 ",," 81,47,300.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL05071,,16-Aug-17," 81,600.00 ",," 80,65,700.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL06071,,16-Aug-17," 41,800.00 ",," 80,23,900.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL07071,,16-Aug-17," 98,500.00 ",," 79,25,400.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL10071,,16-Aug-17," 1,43,800.00 ",," 77,81,600.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL11071,,16-Aug-17," 3,31,650.00 ",," 74,49,950.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL12071,,16-Aug-17," 1,29,000.00 ",," 73,20,950.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL13071,,16-Aug-17," 2,30,013.00 ",," 70,90,937.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL14071,,16-Aug-17," 3,67,900.00 ",," 67,23,037.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL15071,,16-Aug-17," 1,08,000.00 ",," 66,15,037.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL16071,,16-Aug-17," 64,800.00 ",," 65,50,237.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL17071,,16-Aug-17," 1,41,000.00 ",," 64,09,237.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL18071,,16-Aug-17," 61,750.00 ",," 63,47,487.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL19071,,16-Aug-17," 67,920.00 ",," 62,79,567.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL20071,,16-Aug-17," 78,100.00 ",," 62,01,467.00 ",.
-409000611074',16-Aug-17,INDO GIBL Indiaforensic STL21071,,16-Aug-17," 35,650.00 ",," 61,65,817.00 ",.
-409000362497',28-Feb-19,FDRL/INTERNAL FUND TRANSFE,,28-Feb-19,," 10,00,000.00 "," -1,90,17,59,255.39 ",.
-409000362497',28-Feb-19,IMPS 280220194C,,28-Feb-19," 25,953.71 ",," -1,90,17,85,209.10 ",.
-409000362497',28-Feb-19,Sweep Trf To: 40900036427,,28-Feb-19," 10,000.00 ",," -1,90,17,95,209.10 ",.
-409000362497',01-Mar-19,IMPS 2802191C,,01-Mar-19," 33,245.55 ",," -1,90,18,28,454.65 ",.
-409000362497',01-Mar-19,IMPS 010320192C,,01-Mar-19," 4,47,689.53 ",," -1,90,22,76,144.18 ",.
-409000362497',01-Mar-19,INDIAIDEAS.COM LTD,,01-Mar-19," 9,864.00 ",," -1,90,22,86,008.18 ",.
-409000362497',01-Mar-19,PAYU PAYMENTS PRIVATE LIM,,01-Mar-19," 1,868.00 ",," -1,90,22,87,876.18 ",.
-409000362497',01-Mar-19,FUTURE RETAIL LIMITED (OW,,01-Mar-19, 492.00 ,," -1,90,22,88,368.18 ",.
-409000362497',01-Mar-19,DISH INFRA SERVICES PRIVA,,01-Mar-19, 305.00 ,," -1,90,22,88,673.18 ",.
-409000362497',01-Mar-19,MEHAR ENTERTAINMENT PRIVA,,01-Mar-19," 1,843.00 ",," -1,90,22,90,516.18 ",.
-409000362497',01-Mar-19,INDIAN OIL CORPORATION LT,,01-Mar-19," 20,46,017.00 ",," -1,90,43,36,533.18 ",.
-409000362497',01-Mar-19,Indiaforensic SERVICES INDIA PVT,,01-Mar-19," 36,109.90 ",," -1,90,43,72,643.08 ",.
-409000362497',01-Mar-19,IMPS 010320193C,,01-Mar-19," 3,88,948.62 ",," -1,90,47,61,591.70 ",.
-409000362497',01-Mar-19,FDRL/INTERNAL FUND TRANSFE,,01-Mar-19,," 3,00,000.00 "," -1,90,44,61,591.70 ",.
-409000362497',01-Mar-19,IMPS 010320194C,,01-Mar-19," 27,858.93 ",," -1,90,44,89,450.63 ",.
-409000362497',01-Mar-19,NEFT/SBIN419060609430/Indfor,,01-Mar-19,," 20,00,000.00 "," -1,90,24,89,450.63 ",.
-409000362497',01-Mar-19,Sweep Trf To: 40900036427,,01-Mar-19," 25,150.00 ",," -1,90,25,14,600.63 ",.
-409000362497',02-Mar-19,IMPS 0103191C,,02-Mar-19," 49,089.22 ",," -1,90,25,63,689.85 ",.
-409000362497',02-Mar-19,IMPS 0203192C,,02-Mar-19," 3,60,211.08 ",," -1,90,29,23,900.93 ",.
-409000362497',02-Mar-19,IMPS 020320193C,,02-Mar-19," 4,90,955.18 ",," -1,90,34,14,856.11 ",.
+Date,Description,Debit Amount,Credit Amount,Reference,Category
+2025-01-05,Initial Balance,,25000.00,INIT-2025,General
+2025-01-06,Cash Withdrawal - ATM,500.00,,ATM-7845,Withdrawal
+2025-01-07,Monthly Salary,,5000.00,SAL-JAN-25,Income
+2025-01-08,Electric Bill - City Power,120.50,,UTIL-ELEC-25,Utilities
+2025-01-09,Supermart Groceries,85.75,,POS-4532,Groceries
+2025-01-10,Fund Transfer to J. Smith,250.00,,TRF-89675,Transfers
+2025-01-11,Bella Italia Restaurant,65.50,,POS-8732,Dining
+2025-01-12,Mobile Phone Bill - Verizon,45.99,,BILL-78934,Utilities
+2025-01-13,Shell Gas Station,60.00,,POS-6789,Transportation
+2025-01-14,CVS Pharmacy,32.45,,POS-1234,Health
+2025-01-15,Starbucks Coffee,6.75,,POS-5678,Dining
+2025-01-16,Amazon Prime Purchase,129.99,,ONL-9082,Shopping
+2025-01-17,Fitness Club Monthly Fee,50.00,,DD-56473,Health
+2025-01-18,Home Insurance Premium,175.50,,INS-56789,Insurance
+2025-01-19,Comcast Internet Service,65.00,,UTIL-NET-25,Utilities
+2025-01-20,ATM Withdrawal - Branch #45,300.00,,ATM-8956,Withdrawal
+2025-01-21,Gap Clothing Purchase,95.20,,POS-4567,Shopping
+2025-01-22,Internal Transfer from Savings,,1000.00,TRF-INT-78,Transfers
+2025-01-23,Monthly Rent Payment,1200.00,,CHK-8907,Housing
+2025-01-24,Stock Dividend - Tech Inc,,45.75,DIV-45678,Income
+2025-01-25,Auto Loan Monthly Payment,320.00,,LOAN-5678,Loans
+2025-01-26,Barnes & Noble Books,24.99,,POS-3456,Entertainment
+2025-01-27,Municipal Water Bill,45.30,,UTIL-WATER-25,Utilities
+2025-01-28,Income Tax Refund,,750.00,TAX-RF-2025,Income
+2025-01-29,Home Repair Service,152.00,,SRV-4567,Housing
+2025-01-30,Staples Office Supplies,28.45,,POS-2345,Office
+2025-01-31,Gift Purchase - Jewelry,75.00,,POS-1290,Shopping
+2025-02-01,Work Performance Bonus,,250.00,BONUS-FEB-25,Income
+2025-02-02,Dental Clinic Visit,120.00,,MED-5690,Health
+2025-02-03,Metro Transit Card Reload,12.50,,TRN-4567,Transportation
+2025-02-04,Netflix Subscription Renewal,14.99,,SUB-NET-25,Entertainment
+2025-02-05,Best Buy Refund,,85.00,REF-BB-25,Return
+2025-02-06,Home Depot Purchase,65.75,,POS-8921,Home
+2025-02-07,Greenwood Academy Tuition Fee,350.00,,SCH-TUI-25,Education
+2025-02-08,Branch ATM Withdrawal,200.00,,ATM-2341,Withdrawal
+2025-02-09,Savings Account Interest,,12.35,INT-SAV-25,Income
+2025-02-10,Monthly Account Maintenance Fee,10.00,,FEE-25-02,Fees
+2025-02-11,Home Mortgage Payment,950.00,,MTG-FEB-25,Housing
+2025-02-12,Employment Salary Deposit,,5000.00,SAL-FEB-25,Income
+2025-02-13,Kroger Supermarket,122.30,,POS-4890,Groceries
+2025-02-14,PetSmart Supplies,45.60,,POS-7821,Pets
+2025-02-15,Udemy Online Course,199.00,,ONL-UDM-25,Education
+2025-02-16,Wire Transfer from Family,,100.00,WIRE-456789,Income
+2025-02-17,SuperCuts Hair Salon,55.00,,POS-3421,Personal Care
+2025-02-18,Red Cross Donation,25.00,,DON-5678,Charity
+2025-02-19,Pacific Power Electric Bill,115.45,,UTIL-ELEC-FEB,Utilities
+2025-02-20,Brokerage Account Investment,1000.00,,INV-56789,Investments
+2025-02-21,Lunch at Panda Express,28.75,,POS-6781,Dining
+2025-02-22,Vehicle Insurance - Geico,145.00,,INS-78901,Insurance
+2025-02-23,Ticket Master - Concert Tickets,125.00,,ENT-5678,Entertainment
+2025-02-24,Dunkin' Donuts Coffee,4.25,,POS-2345,Dining
+2025-02-25,Target Store Purchase,92.45,,POS-5678,Shopping
+2025-02-26,AT&T Mobile Bill,45.99,,BILL-23456,Utilities
+2025-02-27,Gym Day Pass,15.00,,POS-7890,Health
+2025-02-28,ATM Withdrawal - Downtown,100.00,,ATM-3456,Withdrawal
+2025-03-01,Xfinity Internet Payment,65.00,,UTIL-NET-25-1,Utilities
+2025-03-02,Thai Palace Restaurant,42.75,,POS-6543,Dining
+2025-03-03,Monthly Salary Deposit,,5000.00,SAL-MAR-25,Income
+2025-03-04,Monthly Rent Payment,1200.00,,CHK-8908,Housing
+2025-03-05,Walgreens Pharmacy,28.99,,POS-7654,Health
+2025-03-06,Chevron Gas Station,55.50,,POS-8765,Transportation
+2025-03-07,Amazon Electronics Purchase,78.45,,ONL-9083,Shopping
+2025-03-08,AMC Movie Tickets,25.00,,ENT-2345,Entertainment
+2025-03-09,Whole Foods Market,105.25,,POS-3456,Groceries
+2025-03-10,ATM Withdrawal - Mall,150.00,,ATM-4567,Withdrawal
+2025-03-11,Costa Coffee Shop,5.25,,POS-5678,Dining
+2025-03-12,Jiffy Lube Car Maintenance,220.00,,SRV-6789,Transportation
+2025-03-13,H&M Clothing Purchase,65.99,,POS-7890,Shopping
+2025-03-14,Transfer to Savings Account,500.00,,TRF-12345,Transfers
+2025-03-15,Liberty Mutual Insurance,175.50,,INS-23456,Insurance
+2025-03-16,PG&E Electricity Payment,118.75,,UTIL-ELEC-25-1,Utilities
+2025-03-17,Five Guys Burgers,22.50,,POS-34567,Dining
+2025-03-18,City Metro Pass,12.50,,TRN-45678,Transportation
+2025-03-19,Peet's Coffee Shop,4.75,,POS-56789,Dining
+2025-03-20,Wire Transfer to Parent,100.00,,TRF-78901,Transfers
+2025-03-21,Barnes & Noble Purchase,32.99,,POS-89012,Entertainment
+2025-03-22,Safeway Groceries,95.25,,POS-90123,Groceries
+2025-03-23,Apple Store Accessory,25.00,,POS-01234,Shopping
+2025-03-24,Domino's Pizza,33.50,,POS-12345,Dining
+2025-03-25,ATM Withdrawal - Bank Branch,200.00,,ATM-23456,Withdrawal
+2025-03-26,Gift Shop Purchase,45.00,,POS-34567,Shopping
+2025-03-27,Spotify Premium Subscription,9.99,,SUB-SPO-25,Entertainment
+2025-03-28,Exxon Gas Station,58.50,,POS-45678,Transportation
+2025-03-29,Trader Joe's Groceries,88.75,,POS-56789,Groceries
+2025-03-30,Lowe's Home Improvement,125.45,,POS-67890,Home
+2025-03-31,Savings Interest Credit,,15.45,INT-SAV-25-1,Income
+2025-04-01,Home Mortgage Payment,950.00,,MTG-APR-25,Housing
+2025-04-02,Health Insurance Premium,210.00,,INS-HEA-25,Insurance
+2025-04-03,Employment Salary Deposit,,5000.00,SAL-APR-25,Income
+2025-04-04,Spectrum Internet Service,65.00,,UTIL-NET-25-2,Utilities
+2025-04-05,Kroger Supermarket,102.35,,POS-12345,Groceries
+2025-04-06,Starbucks Coffee,5.25,,POS-23456,Dining
+2025-04-07,ATM Withdrawal - Airport,150.00,,ATM-34567,Withdrawal
+2025-04-08,Olive Garden Restaurant,48.75,,POS-45678,Dining
+2025-04-09,Verizon Wireless Payment,45.99,,BILL-56789,Utilities
+2025-04-10,Best Buy Electronics,189.99,,POS-67890,Shopping
+2025-04-11,BP Gas Station,60.00,,POS-78901,Transportation
+2025-04-12,Albertsons Groceries,95.75,,POS-89012,Groceries
+2025-04-13,CVS Health Products,22.50,,POS-90123,Health
+2025-04-14,Peet's Coffee Shop,4.75,,POS-01234,Dining
+2025-04-15,24 Hour Fitness Membership,50.00,,DD-56474,Health
+2025-04-16,Duke Energy Electric Bill,115.25,,UTIL-ELEC-25-2,Utilities
+2025-04-17,ATM Withdrawal - Convention Center,200.00,,ATM-12345,Withdrawal
+2025-04-18,Sushi Express Restaurant,55.00,,POS-23456,Dining
+2025-04-19,Macy's Department Store,85.50,,POS-34567,Shopping
+2025-04-20,Uber Transportation,12.50,,TRN-45678,Transportation
+2025-04-21,Publix Supermarket,92.45,,POS-56789,Groceries
+2025-04-22,Office Depot Supplies,35.99,,POS-67890,Office
+2025-04-23,Coffee Bean Café,5.25,,POS-78901,Dining
+2025-04-24,Fund Transfer to S. Johnson,75.00,,TRF-89012,Transfers
+2025-04-25,Shell Gas Station,57.50,,POS-90123,Transportation
+2025-04-26,Safeway Groceries,98.25,,POS-01234,Groceries
+2025-04-27,Regal Cinema Tickets,30.00,,ENT-12345,Entertainment
+2025-04-28,Chipotle Mexican Grill,42.75,,POS-23456,Dining
+2025-04-29,Great Clips Haircut,65.00,,POS-34567,Personal Care
+2025-04-30,Monthly Service Charge,10.00,,FEE-25-04,Fees
+2025-05-01,Monthly Rent Payment,1200.00,,CHK-8909,Housing
+2025-05-02,Auto Loan Payment,320.00,,LOAN-5679,Loans
+2025-05-03,Monthly Salary Deposit,,5000.00,SAL-MAY-25,Income
+2025-05-04,Kroger Supermarket,105.50,,POS-45678,Groceries
+2025-05-05,ATM Withdrawal - Downtown,150.00,,ATM-56789,Withdrawal
+2025-05-06,Dunkin' Donuts Coffee,4.75,,POS-67890,Dining
+2025-05-07,T-Mobile Phone Bill,45.99,,BILL-78901,Utilities
+2025-05-08,Progressive Insurance Premium,175.50,,INS-89012,Insurance
+2025-05-09,Outback Steakhouse Dinner,85.00,,POS-90123,Dining
+2025-05-10,Bed Bath & Beyond Purchase,125.99,,POS-01234,Home
+2025-05-11,Walmart Groceries,88.75,,POS-12345,Groceries
+2025-05-12,Texaco Gas Station,62.50,,POS-23456,Transportation
+2025-05-13,Starbucks Coffee,5.25,,POS-34567,Dining
+2025-05-14,Rite Aid Pharmacy,32.99,,POS-45678,Health
+2025-05-15,Southern Electric Company,112.50,,UTIL-ELEC-25-3,Utilities
+2025-05-16,Lyft Ride Service,12.50,,TRN-56789,Transportation
+2025-05-17,ATM Withdrawal - Shopping Mall,200.00,,ATM-67890,Withdrawal
+2025-05-18,Panera Bread Restaurant,35.75,,POS-78901,Dining
+2025-05-19,Target Groceries,95.25,,POS-89012,Groceries
+2025-05-20,Netflix Subscription Renewal,14.99,,SUB-NET-25-1,Entertainment
+2025-05-21,JCPenney Clothing Purchase,75.50,,POS-90123,Shopping
+2025-05-22,Peet's Coffee Shop,4.75,,POS-01234,Dining
+2025-05-23,Marathon Gas Station,59.50,,POS-12345,Transportation
+2025-05-24,Kroger Supermarket,92.75,,POS-23456,Groceries
+2025-05-25,Cox Cable Internet,65.00,,UTIL-NET-25-3,Utilities
+2025-05-26,Transfer to Savings Account,300.00,,TRF-34567,Transfers
+2025-05-27,China Express Restaurant,42.50,,POS-45678,Dining
+2025-05-28,ATM Withdrawal - Bank Branch,100.00,,ATM-56789,Withdrawal
+2025-05-29,Starbucks Coffee,5.25,,POS-67890,Dining
+2025-05-30,Hallmark Gift Store,55.00,,POS-78901,Shopping
+2025-05-31,Savings Interest Credit,,16.50,INT-SAV-25-2,Income
+2025-06-01,Home Mortgage Payment,950.00,,MTG-JUN-25,Housing
+2025-06-02,LA Fitness Membership,50.00,,DD-56475,Health
+2025-06-03,Employment Salary Deposit,,5000.00,SAL-JUN-25,Income
+2025-06-04,Whole Foods Market,105.25,,POS-89012,Groceries
+2025-06-05,AT&T Mobile Bill,45.99,,BILL-90123,Utilities
+2025-06-06,Dunkin' Donuts Coffee,4.75,,POS-01234,Dining
+2025-06-07,ATM Withdrawal - Hotel,200.00,,ATM-12345,Withdrawal
+2025-06-08,Olive Garden Restaurant,55.00,,POS-23456,Dining
+2025-06-09,Chevron Gas Station,65.00,,POS-34567,Transportation
+2025-06-10,Publix Supermarket,98.75,,POS-45678,Groceries
+2025-06-11,Apple Store Electronics,245.99,,ONL-56789,Shopping
+2025-06-12,Peet's Coffee Shop,5.25,,POS-67890,Dining
+2025-06-13,Walgreens Pharmacy,28.50,,POS-78901,Health
+2025-06-14,Florida Power & Light,118.50,,UTIL-ELEC-25-4,Utilities
+2025-06-15,Allstate Insurance Premium,175.50,,INS-89012,Insurance
+2025-06-16,BART Transit Fare,12.50,,TRN-90123,Transportation
+2025-06-17,Albertsons Groceries,92.45,,POS-01234,Groceries
+2025-06-18,ATM Withdrawal - Conference Center,150.00,,ATM-12345,Withdrawal
+2025-06-19,Coffee Bean Café,4.75,,POS-23456,Dining
+2025-06-20,Five Guys Restaurant,25.75,,POS-34567,Dining
+2025-06-21,Old Navy Clothing Purchase,95.50,,POS-45678,Shopping
+2025-06-22,Shell Gas Station,62.50,,POS-56789,Transportation
+2025-06-23,Safeway Groceries,102.35,,POS-67890,Groceries
+2025-06-24,Fund Transfer to J. Smith,100.00,,TRF-78901,Transfers
+2025-06-25,Starbucks Coffee,5.25,,POS-89012,Dining
+2025-06-26,Cinemark Movie Tickets,25.00,,ENT-90123,Entertainment
+2025-06-27,Comcast Internet Service,65.00,,UTIL-NET-25-4,Utilities
+2025-06-28,Costco Wholesale Groceries,95.75,,POS-01234,Groceries
+2025-06-29,SuperCuts Hair Salon,60.00,,POS-12345,Personal Care
+2025-06-30,Monthly Service Charge,10.00,,FEE-25-06,Fees
+2025-07-01,Monthly Rent Payment,1200.00,,CHK-8910,Housing
+2025-07-02,Auto Loan Payment,320.00,,LOAN-5680,Loans
+2025-07-03,Monthly Salary Deposit,,5000.00,SAL-JUL-25,Income
+2025-07-04,Kroger Supermarket,112.50,,POS-23456,Groceries
+2025-07-05,ATM Withdrawal - Airport,200.00,,ATM-34567,Withdrawal
+2025-07-06,Peet's Coffee Shop,4.75,,POS-45678,Dining
+2025-07-07,Sprint Phone Bill,45.99,,BILL-56789,Utilities
+2025-07-08,Red Lobster Restaurant,65.00,,POS-67890,Dining
+2025-07-09,Texaco Gas Station,60.00,,POS-78901,Transportation
+2025-07-10,Target Grocery Shopping,95.25,,POS-89012,Groceries
+2025-07-11,Macy's Online Shopping,125.50,,ONL-90123,Shopping
+2025-07-12,Starbucks Coffee,5.25,,POS-01234,Dining
+2025-07-13,CVS Pharmacy,32.50,,POS-12345,Health
+2025-07-14,AEP Electric Bill,122.50,,UTIL-ELEC-25-5,Utilities
+2025-07-15,State Farm Insurance Premium,175.50,,INS-23456,Insurance
+2025-07-16,Uber Ride Service,12.50,,TRN-34567,Transportation
+2025-07-17,Whole Foods Market,98.75,,POS-45678,Groceries
+2025-07-18,ATM Withdrawal - Hotel,150.00,,ATM-56789,Withdrawal
+2025-07-19,Dunkin' Donuts Coffee,4.75,,POS-67890,Dining
+2025-07-20,Planet Fitness Membership,50.00,,DD-56476,Health
+2025-07-21,Domino's Pizza,28.50,,POS-78901,Dining
+2025-07-22,TJ Maxx Clothing Purchase,75.99,,POS-89012,Shopping
+2025-07-23,BP Gas Station,63.50,,POS-90123,Transportation
+2025-07-24,Publix Supermarket,92.75,,POS-01234,Groceries
+2025-07-25,Peet's Coffee Shop,5.25,,POS-12345,Dining
+2025-07-26,Fund Transfer to S. Johnson,50.00,,TRF-23456,Transfers
+2025-07-27,AT&T Internet Service,65.00,,UTIL-NET-25-5,Utilities
+2025-07-28,Kroger Supermarket,105.50,,POS-34567,Groceries
+2025-07-29,Spotify Premium Subscription,9.99,,SUB-SPO-25-1,Entertainment
+2025-07-30,ATM Withdrawal - Mall,100.00,,ATM-45678,Withdrawal
+2025-07-31,Savings Interest Credit,,18.25,INT-SAV-25-3,Income
+2025-08-01,Home Mortgage Payment,950.00,,MTG-AUG-25,Housing
+2025-08-02,Health Insurance Premium,210.00,,INS-HEA-25-1,Insurance
+2025-08-03,Employment Salary Deposit,,5000.00,SAL-AUG-25,Income
+2025-08-04,Albertsons Groceries,108.75,,POS-56789,Groceries
+2025-08-05,Verizon Wireless Payment,45.99,,BILL-67890,Utilities
+2025-08-06,Coffee Bean Café,4.75,,POS-78901,Dining
+2025-08-07,ATM Withdrawal - Conference Center,200.00,,ATM-89012,Withdrawal
+2025-08-08,Thai Palace Restaurant,45.50,,POS-90123,Dining
+2025-08-09,Chevron Gas Station,65.00,,POS-01234,Transportation
+2025-08-10,Target Groceries,95.25,,POS-12345,Groceries
+2025-08-11,Best Buy Electronics,189.99,,POS-23456,Shopping
+2025-08-12,Starbucks Coffee,5.25,,POS-34567,Dining
+2025-08-13,Walgreens Pharmacy,28.99,,POS-45678,Health
+2025-08-14,PG&E Electric Bill,125.50,,UTIL-ELEC-25-6,Utilities
+2025-08-15,Liberty Mutual Insurance,175.50,,INS-56789,Insurance
+2025-08-16,Lyft Ride Service,12.50,,TRN-67890,Transportation
+2025-08-17,Safeway Groceries,102.35,,POS-78901,Groceries
+2025-08-18,ATM Withdrawal - Bank Branch,150.00,,ATM-89012,Withdrawal
+2025-08-19,Peet's Coffee Shop,4.75,,POS-90123,Dining
+2025-08-20,Chipotle Mexican Grill,38.75,,POS-01234,Dining
+2025-08-21,Kohl's Clothing Purchase,85.99,,POS-12345,Shopping
+2025-08-22,Shell Gas Station,62.50,,POS-23456,Transportation
+2025-08-23,Kroger Supermarket,95.75,,POS-34567,Groceries
+2025-08-24,Transfer to Savings Account,500.00,,TRF-45678,Transfers
+2025-08-25,Starbucks Coffee,5.25,,POS-56789,Dining
+2025-08-26,AMC Movie Tickets,30.00,,ENT-67890,Entertainment
+2025-08-27,Spectrum Internet Service,65.00,,UTIL-NET-25-6,Utilities
+2025-08-28,Trader Joe's Groceries,92.45,,POS-78901,Groceries
+2025-08-29,Great Clips Haircut,65.00,,POS-89012,Personal Care
+2025-08-30,ATM Withdrawal - Downtown,100.00,,ATM-90123,Withdrawal
+2025-08-31,Monthly Service Charge,10.00,,FEE-25-08,Fees
+2025-09-01,Monthly Rent Payment,1200.00,,CHK-8911,Housing
+2025-09-02,Auto Loan Payment,320.00,,LOAN-5681,Loans
+2025-09-03,Monthly Salary Deposit,,5000.00,SAL-SEP-25,Income
+2025-09-04,Whole Foods Market,105.25,,POS-01234,Groceries
+2025-09-05,T-Mobile Phone Bill,45.99,,BILL-12345,Utilities
+2025-09-06,Dunkin' Donuts Coffee,4.75,,POS-23456,Dining
+2025-09-07,ATM Withdrawal - Hotel,200.00,,ATM-34567,Withdrawal
+2025-09-08,Outback Steakhouse Dinner,75.00,,POS-45678,Dining
+2025-09-09,Exxon Gas Station,64.50,,POS-56789,Transportation
+2025-09-10,Publix Supermarket,98.75,,POS-67890,Groceries
+2025-09-11,Home Goods Purchase,145.99,,POS-78901,Home
+2025-09-12,Starbucks Coffee,5.25,,POS-89012,Dining
+2025-09-13,Rite Aid Pharmacy,32.99,,POS-90123,Health
+2025-09-14,Duke Energy Electric Bill,118.50,,UTIL-ELEC-25-7,Utilities
+2025-09-15,Allstate Insurance Premium,175.50,,INS-01234,Insurance
+2025-09-16,BART Transit Fare,12.50,,TRN-12345,Transportation
+2025-09-17,Safeway Groceries,95.25,,POS-23456,Groceries
+2025-09-18,ATM Withdrawal - Convention Center,150.00,,ATM-34567,Withdrawal
+2025-09-19,Coffee Bean Café,4.75,,POS-45678,Dining
+2025-09-20,24 Hour Fitness Membership,50.00,,DD-56477,Health
+2025-09-21,Panera Bread Restaurant,32.50,,POS-56789,Dining
+2025-09-22,Gap Clothing Purchase,75.99,,POS-67890,Shopping
+2025-09-23,BP Gas Station,62.50,,POS-78901,Transportation
+2025-09-24,Kroger Supermarket,92.75,,POS-89012,Groceries
+2025-09-25,Peet's Coffee Shop,5.25,,POS-90123,Dining
+2025-09-26,Fund Transfer to J. Smith,100.00,,TRF-01234,Transfers
+2025-09-27,Cox Cable Internet,65.00,,UTIL-NET-25-7,Utilities
+2025-09-28,Target Groceries,105.50,,POS-12345,Groceries
+2025-09-29,Netflix Subscription Renewal,14.99,,SUB-NET-25-2,Entertainment
+2025-09-30,Savings Interest Credit,,19.75,INT-SAV-25-4,Income
+2025-10-01,Home Mortgage Payment,950.00,,MTG-OCT-25,Housing
+2025-10-02,ATM Withdrawal - Airport,200.00,,ATM-23456,Withdrawal
+2025-10-03,Employment Salary Deposit,,5000.00,SAL-OCT-25,Income
+2025-10-04,Albertsons Groceries,112.50,,POS-34567,Groceries
+2025-10-05,AT&T Mobile Bill,45.99,,BILL-45678,Utilities
+2025-10-06,Dunkin' Donuts Coffee,4.75,,POS-56789,Dining
+2025-10-07,China Express Restaurant,42.50,,POS-67890,Dining
+2025-10-08,Shell Gas Station,65.00,,POS-78901,Transportation
+2025-10-09,Walmart Groceries,95.25,,POS-89012,Groceries
+2025-10-10,Best Buy Electronics,220.99,,POS-90123,Shopping
+2025-10-11,Starbucks Coffee,5.25,,POS-01234,Dining
+2025-10-12,CVS Pharmacy,28.99,,POS-12345,Health
+2025-10-13,Southern Electric Company,128.50,,UTIL-ELEC-25-8,Utilities
+2025-10-14,Progressive Insurance Premium,175.50,,INS-23456,Insurance
+2025-10-15,Uber Ride Service,12.50,,TRN-34567,Transportation
+2025-10-16,Kroger Supermarket,98.75,,POS-45678,Groceries
+2025-10-17,ATM Withdrawal - Bank Branch,150.00,,ATM-56789,Withdrawal
+2025-10-18,Peet's Coffee Shop,4.75,,POS-67890,Dining
+2025-10-19,Five Guys Restaurant,25.75,,POS-78901,Dining
+2025-10-20,Old Navy Clothing Purchase,95.99,,POS-89012,Shopping
+2025-10-21,Chevron Gas Station,63.50,,POS-90123,Transportation
+2025-10-22,Safeway Groceries,92.45,,POS-01234,Groceries
+2025-10-23,Transfer to Savings Account,300.00,,TRF-12345,Transfers
+2025-10-24,Starbucks Coffee,5.25,,POS-23456,Dining
+2025-10-25,Regal Cinema Tickets,30.00,,ENT-34567,Entertainment
+2025-10-26,Comcast Internet Service,65.00,,UTIL-NET-25-8,Utilities
+2025-10-27,Whole Foods Market,105.50,,POS-45678,Groceries
+2025-10-28,SuperCuts Hair Salon,60.00,,POS-56789,Personal Care
+2025-10-29,ATM Withdrawal - Shopping Mall,100.00,,ATM-67890,Withdrawal
+2025-10-30,Olive Garden Restaurant,48.75,,POS-78901,Dining
+2025-10-31,Monthly Service Charge,10.00,,FEE-25-10,Fees
+2025-11-01,Monthly Rent Payment,1200.00,,CHK-8912,Housing
+2025-11-02,Auto Loan Payment,320.00,,LOAN-5682,Loans
+2025-11-03,Monthly Salary Deposit,,5000.00,SAL-NOV-25,Income
