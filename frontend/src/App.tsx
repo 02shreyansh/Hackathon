@@ -12,6 +12,7 @@ import SettingsPage from './pages/settings';
 import ScheduleDemoPage from './pages/Contact';
 import  HomeDashboard  from './pages/AuthHome';
 import { useUserStore } from './store/useUserStore';
+import WatchDemoPage from './pages/watchDemo';
 const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useUserStore();
   if (!isAuthenticated) {
@@ -40,6 +41,7 @@ function App() {
           <Route path='reconciliation' element={<Reconciliation/>}/>
           <Route path='settings' element={<ProtectedRoutes><SettingsPage/></ProtectedRoutes>}/>
           <Route path='contact' element={<ScheduleDemoPage/>}/>
+          <Route path='watchDemo' element={<WatchDemoPage/>}/>
         </Route>
         <Route path="signup" element={<AuthenticatedUser><SignupForm /></AuthenticatedUser>} />
         <Route path="signin" element={<AuthenticatedUser><SigninPage /></AuthenticatedUser>} />
