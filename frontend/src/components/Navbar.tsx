@@ -16,11 +16,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const location = useLocation();
-
+  const navigate=useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const NavItems = [
@@ -69,11 +69,11 @@ export default function Navbar() {
 
           {/* User profile & settings */}
           <div className="hidden md:flex md:items-center">
-            <Button variant="ghost" size="icon" className="mr-2 cursor-pointer">
+            <Button variant="ghost" size="icon" className="mr-2 cursor-pointer" onClick={() => navigate('/settings')}>
               <Settings className="h-5 w-5" />
             </Button>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+            <Avatar onClick={() => navigate('/profile')} className="cursor-pointer">
+              <AvatarImage src="https://github.com/shadcn.png" alt="User"  />
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
           </div>
@@ -123,7 +123,7 @@ export default function Navbar() {
                   <Separator className="my-2" />
                   <div className="flex items-center justify-between px-2 pt-2">
                     <div className="flex items-center">
-                      <Avatar className="h-8 w-8">
+                      <Avatar className="h-8 w-8" onClick={() => navigate('/profile')}>
                         <AvatarImage src="https://github.com/shadcn.png" alt="User" />
                         <AvatarFallback>JD</AvatarFallback>
                       </Avatar>
@@ -132,7 +132,7 @@ export default function Navbar() {
                         <p className="text-xs text-gray-500">john@example.com</p>
                       </div>
                     </div>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" onClick={()=>navigate('/settings')}>
                       <Settings className="h-5 w-5" />
                     </Button>
                   </div>
