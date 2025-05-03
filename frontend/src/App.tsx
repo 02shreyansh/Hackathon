@@ -16,7 +16,7 @@ import WatchDemoPage from './pages/watchDemo';
 const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useUserStore();
   if (!isAuthenticated) {
-    return <Navigate to={"/"} replace />
+    return <Navigate to={"/signin"} replace />
   }
   return <>{children}</>;
 }
