@@ -1,4 +1,3 @@
-// Dashboard.tsx
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -15,7 +14,6 @@ import {
   Download
 } from 'lucide-react';
 
-// Type definitions
 type Transaction = {
   id: string;
   date: string;

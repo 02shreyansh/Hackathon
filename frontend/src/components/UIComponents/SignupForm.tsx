@@ -3,11 +3,15 @@ import { CheckCircle2, Eye, EyeOff, XCircle } from 'lucide-react';
 import { SignupFormData, signupSchema } from '@/types/SignUp';
 import { useForm } from 'react-hook-form'; 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
+import { useUserStore } from '@/store/useUserStore';
+import { useNavigate } from 'react-router-dom';
 
 export const SignupForm=()=> {
+    const {signup,isSubmitting}=useUserStore();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -22,15 +26,10 @@ export const SignupForm=()=> {
 
     const onSubmit = async (data: SignupFormData) => {
         try {
-            setIsSubmitting(true);
-            console.log('Form submitted with data:', data);
-            await new Promise((resolve) => setTimeout(resolve, 1500));
-            alert('Account created successfully!');
+            await signup(data);
+            navigate('/auth');
         } catch (error) {
-            console.error('Error during signup:', error);
-            alert('An error occurred during signup. Please try again.');
-        } finally {
-            setIsSubmitting(false);
+            toast.error(error instanceof Error ? error.message : String(error))
         }
     };
     const passwordCriteria = [
@@ -198,7 +197,7 @@ export const SignupForm=()=> {
             <div className="mt-6 text-center">
                 <p className="text-sm text-gray-600">
                     Already have an account?{' '}
-                    <a href="#" className="font-medium text-blue-600 hover:underline">
+                    <a href="/signin" className="font-medium text-blue-600 hover:underline">
                         Sign in
                     </a>
                 </p>

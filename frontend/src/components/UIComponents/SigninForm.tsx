@@ -3,11 +3,15 @@ import { CheckCircle2, Eye, EyeOff, XCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form'; 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SigninFormData, signinSchema } from '@/types/Signin';
+import { useUserStore } from '@/store/useUserStore';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 export const SigninForm=()=> {
+    const {login,isSubmitting} =useUserStore();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate=useNavigate();
     const {
         register,
         handleSubmit,
@@ -22,16 +26,11 @@ export const SigninForm=()=> {
 
     const onSubmit = async (data: SigninFormData) => {
         try {
-            setIsSubmitting(true);
-            console.log('Form submitted with data:', data);
-            await new Promise((resolve) => setTimeout(resolve, 1500));
-            alert('Login successfully!');
+            await login(data);
+            navigate('/profile')
         } catch (error) {
-            console.error('Error during signin:', error);
-            alert('An error occurred during signin. Please try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
+            toast.error(error instanceof Error ? error.message : String(error))
+        } 
     };
     const passwordCriteria = [
         { label: 'At least 8 characters', met: password.length >= 8 },
