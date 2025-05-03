@@ -1,0 +1,240 @@
+{
+  "id": "6b5ea4a0-5919-4c7e-93c2-0b928c6e7a01",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.User": {
+      "name": "User",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone_number": {
+          "name": "phone_number",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "company_name": {
+          "name": "company_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_verified": {
+          "name": "is_verified",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'true'"
+        },
+        "is_deleted": {
+          "name": "is_deleted",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_blocked": {
+          "name": "is_blocked",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_approved": {
+          "name": "is_approved",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_suspended": {
+          "name": "is_suspended",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_password_reset": {
+          "name": "is_password_reset",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_email_verified": {
+          "name": "is_email_verified",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_phone_verified": {
+          "name": "is_phone_verified",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'false'"
+        },
+        "is_email_verified_at": {
+          "name": "is_email_verified_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_phone_verified_at": {
+          "name": "is_phone_verified_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_password_reset_at": {
+          "name": "is_password_reset_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_blocked_at": {
+          "name": "is_blocked_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_approved_at": {
+          "name": "is_approved_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_suspended_at": {
+          "name": "is_suspended_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_deleted_at": {
+          "name": "is_deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_active_at": {
+          "name": "is_active_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_verified_at": {
+          "name": "is_verified_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'user'"
+        },
+        "refresh_token": {
+          "name": "refresh_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "User_email_unique": {
+          "name": "User_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        },
+        "User_phone_number_unique": {
+          "name": "User_phone_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "phone_number"
+          ]
+        },
+        "User_refresh_token_unique": {
+          "name": "User_refresh_token_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "refresh_token"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
