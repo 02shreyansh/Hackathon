@@ -9,8 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Play, Pause, FastForward, Volume2, VolumeX, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const WatchDemoPage = () => {
+  const navigate=useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -299,7 +301,7 @@ const WatchDemoPage = () => {
                 </Tabs>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">Schedule a Full Demo</Button>
+                <Button className="w-full" onClick={()=>navigate("/contact")}>Schedule a Full Demo</Button>
               </CardFooter>
             </Card>
           </div>

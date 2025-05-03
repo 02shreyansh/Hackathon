@@ -16,8 +16,10 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
+  const navigate=useNavigate()
   const features = [
     {
       icon: <Upload className="h-10 w-10 text-blue-600" />,
@@ -81,11 +83,11 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700" 
-                onClick={()=>window.location.href="/signup"}
+                onClick={()=>navigate("/signup")}
                 >
                   Get Started
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" onClick={()=>navigate("/watchDemo")}>
                   Watch Demo
                 </Button>
               </div>
@@ -213,10 +215,10 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 cursor-pointer" onClick={()=>window.location.href="/reconciliation"}>
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 cursor-pointer" onClick={()=>navigate("/reconciliation")}>
                 Start Free Trial
               </Button>
-              <Button size="lg" variant="outline" className="text-black border-white hover:bg-blue-50 cursor-pointer" onClick={()=>window.location.href="/contact"}>
+              <Button size="lg" variant="outline" className="text-black border-white hover:bg-blue-50 cursor-pointer" onClick={()=>navigate("/contact")}>
                 Schedule Demo
               </Button>
             </div>
